@@ -9,7 +9,7 @@ function App() {
   return (
     <div> 
       <Header title={'League of Babes'}/>
-      <button>Press me daddy</button>
+      <button onClick={() => setCount(count + 1)}>Press me daddy {count}</button>
     </div>
   )
 }
