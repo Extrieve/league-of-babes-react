@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import Header from './Header'
+import Card from './Card'
 import './App.css'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
   return (
     <div> 
       <Header title={'League of Babes'}/>
+      <Card championName='Ahri' championPicture='https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_28.jpg' />
       <button onClick={() => setCount(count + 1)}>Press me daddy {count}</button>
     </div>
   )
