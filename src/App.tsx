@@ -11,7 +11,7 @@ function App() {
     <div> 
       <Header title={'League of Babes'}/>
       <Card championName='Ahri' championPicture='https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_28.jpg' />
-      <button onClick={() => setCount(count + 1)}>Press me daddy {count}</button>
+      <button className='btn btn-primary' onClick={() => setCount(count + 1)}>Press me daddy {count}</button>
     </div>
   )
 }
