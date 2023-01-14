@@ -7,7 +7,7 @@ type HeaderProps = {
 
 const Card : FC<HeaderProps> = ({championName, championPicture}) => {
     return(
-        <div className="card">
+        <div className="card" style={{width: "18rem"}}>
         <img src={championPicture} className="card-img-top" alt="..." />
         <div className="card-body">
             <h5 className="card-title">{championName}</h5>

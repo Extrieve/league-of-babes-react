@@ -13,11 +13,9 @@ function App() {
     .then(response => response.json())
     .then(data => setChampions(data))
 
-  console.log(champions)
   return (
     <div> 
       <Header title={'League of Babes'}/>
-      {/* <Card championName='Ahri' championPicture='https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_28.jpg' /> */}
       {champions.map((champion: any) => (
         <Card championName={champion['name']} championPicture={champion['profilePictureUrl']} />
       )
