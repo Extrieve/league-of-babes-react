@@ -11,7 +11,7 @@ function App() {
 
   // Fetch data from API
   useEffect(() => {
-    fetch('https://api.leagueofbabes.com/champions')
+    fetch('http://localhost:8080/champions')
       .then(response => response.json())
       .then(data => setChampions(data)).catch(error => console.log(error))
   }, [])
