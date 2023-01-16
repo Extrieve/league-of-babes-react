@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import Header from './Header'
 import Card from './Card'
@@ -7,11 +7,14 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  // Fetch data from API
   const [champions, setChampions] = useState([])
-  fetch('http://localhost:8080/champions')
-    .then(response => response.json())
-    .then(data => setChampions(data))
+
+  // Fetch data from API
+  useEffect(() => {
+    fetch('https://api.leagueofbabes.com/champions')
+      .then(response => response.json())
+      .then(data => setChampions(data)).catch(error => console.log(error))
+  }, [])
 
   return (
     <div> 
