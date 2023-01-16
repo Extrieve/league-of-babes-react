@@ -23,6 +23,7 @@ function App() {
   return (
     <div> 
       <Header title={'League of Babes'}/>
+      <button className='btn btn-danger' onClick={() => setCount(count + 1)}>Press me daddy {count}</button>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -35,7 +36,7 @@ function App() {
           {champions.map((champion: any) => (
             <tr>
               <td>{champion['name']}</td>
-              <td><img src={champion['profilePictureUrl']} alt=""/></td>
+              <td><img src={champion['profilePictureUrl']} alt="" style={{"height": "15%", "width": "15%"}} /></td>
             </tr>
           )
           )}
@@ -46,7 +47,6 @@ function App() {
         <Card championName={champion['name']} championPicture={champion['profilePictureUrl']} />
       )
       )} */}
-      <button className='btn btn-primary' onClick={() => setCount(count + 1)}>Press me daddy {count}</button>
     </div>
   )
 }
