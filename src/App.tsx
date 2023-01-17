@@ -21,8 +21,9 @@ function App() {
   }
 
   // Devide champions into 2 arrays
-  const champions1 = champions.slice(0, champions.length / 2)
-  const champions2 = champions.slice(champions.length / 2, champions.length)
+  const champions1 = champions.slice(0, champions.length / 3)
+  const champions2 = champions.slice(champions.length / 3, 2*champions.length / 3)
+  const champions3 = champions.slice(2*champions.length / 3)
 
   return (
     <div> 
@@ -46,6 +47,12 @@ function App() {
             </td>
             <td>
               {champions2.map((champion: any) => (
+                <Card championName={champion['name']} championPicture={champion['profilePictureUrl']} />
+              )
+              )}
+            </td>
+            <td>
+              {champions3.map((champion: any) => (
                 <Card championName={champion['name']} championPicture={champion['profilePictureUrl']} />
               )
               )}
