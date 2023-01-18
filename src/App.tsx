@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
-import Header from './Header'
-import Card from './Card'
+import Header from './components/Header'
+import Card from './components/Card'
 import './App.css'
 
 function App() {
@@ -61,10 +61,6 @@ function App() {
         </tbody>
 
       </table>
-      {/* {champions.map((champion: any) => (
-        <Card championName={champion['name']} championPicture={champion['profilePictureUrl']} />
-      )
-      )} */}
     </div>
   )
 }
