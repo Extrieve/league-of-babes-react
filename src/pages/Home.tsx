@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import Header from '../components/Header'
 import Card from '../components/Card'
-import './App.css'
+import '../App.css'
 
 function Home() {
   const [count, setCount] = useState(0)
