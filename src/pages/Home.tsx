@@ -31,13 +31,6 @@ function Home() {
       <Header title={'League of Babes'}/>
       <button className='btn btn-danger' onClick={() => setCount(count + 1)}>Press me daddy {count}</button>
       <table className="table table-striped">
-        {/* <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Picture</th>
-          </tr>
-        
-        </thead> */}
         <tbody>
           <tr>
             <td>
