@@ -5,15 +5,19 @@ import Home from './pages/Home'
 import Match from './pages/Match'
 import Create from './pages/Create'
 import Champions from './pages/Champions'
+import Nav from './components/Nav'
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/champions" element={<Champions />} />
-      <Route path="/match" element={<Match />} />
-      <Route path="/create" element={<Create />} />
-    </Routes>
+    <>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/champions" element={<Champions />} />
+        <Route path="/match" element={<Match />} />
+        <Route path="/create" element={<Create />} />
+      </Routes>
+    </>
   )
 }
 

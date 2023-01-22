@@ -1,4 +1,5 @@
 import React, { FC, ReactElement } from 'react';
+import { NavLink } from 'react-router-dom';
 
 type NavProps = {
 }
@@ -13,16 +14,16 @@ const Nav : FC<NavProps> = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
             <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="/champions">Champions</a>
+                <NavLink className="nav-link" to="/champions">Champions</NavLink>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="/match">Match</a>
+                <NavLink className="nav-link" to="/match">Match</NavLink>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="/create">Create</a>
+                <NavLink className="nav-link" to="/create">Create</NavLink>
             </li>
             </ul>
         </div>
