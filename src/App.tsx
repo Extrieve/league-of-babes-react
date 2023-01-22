@@ -16,6 +16,7 @@ function App() {
         <Route path="/champions" element={<Champions />} />
         <Route path="/match" element={<Match />} />
         <Route path="/create" element={<Create />} />
+        <Route path="*" element={<h1>404: Not Found</h1>} />
       </Routes>
     </>
   )
