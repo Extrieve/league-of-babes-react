@@ -5,10 +5,16 @@ import Header from '../components/Header'
 import Card from '../components/Card'
 import '../App.css'
 
+interface iChampion {
+  name: string,
+  profilePictureUrl: string
+}
+
 function Champions() {
   const [count, setCount] = useState(0)
 
   const [champions, setChampions] = useState([])
+
 
   // Async useEffect
   useEffect(() => {
@@ -28,7 +34,7 @@ function Champions() {
 
   return (
     <div> 
-      <Header title={'League of Babes'}/>
+      <Header title='League of Babes' color='red' />
       <button className='btn btn-danger' onClick={() => setCount(count + 1)}>Press me daddy {count}</button>
       <table className="table table-striped">
         <tbody>
