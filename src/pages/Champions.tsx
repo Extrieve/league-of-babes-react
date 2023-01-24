@@ -13,7 +13,7 @@ interface iChampion {
 function Champions() {
   const [count, setCount] = useState(0)
 
-  const [champions, setChampions] = useState([])
+  const [champions, setChampions] = useState<iChampion[]>([])
 
 
   // Async useEffect
@@ -41,19 +41,19 @@ function Champions() {
           <tr>
             <td>
               {champions1.map((champion: any) => (
-                <Card championName={champion['name']} championPicture={champion['profilePictureUrl']} />
-              )
-              )}
+                <Card championName={champion.name} championPicture={champion.profilePictureUrl} />
+                )
+                )}
             </td>
             <td>
               {champions2.map((champion: any) => (
-                <Card championName={champion['name']} championPicture={champion['profilePictureUrl']} />
-              )
-              )}
+                <Card championName={champion.name} championPicture={champion.profilePictureUrl} />
+                )
+                )}
             </td>
             <td>
               {champions3.map((champion: any) => (
-                <Card championName={champion['name']} championPicture={champion['profilePictureUrl']} />
+                <Card championName={champion.name} championPicture={champion.profilePictureUrl} />
               )
               )}
             </td>
