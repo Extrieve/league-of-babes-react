@@ -4,35 +4,11 @@ import reactLogo from './assets/react.svg'
 import Header from '../components/Header'
 import Card from '../components/Card'
 import '../App.css'
-import AllChampions from '../data/AllChampions.json'
+import { iChampion } from '../interfaces/iChampion'
 
-interface iChampion {
-  name: string,
-  profilePictureUrl: string
-}
+function Champions({ champions }: { champions: iChampion[]}) {
 
-function Champions() {
   const [count, setCount] = useState(0)
-
-  const [champions, setChampions] = useState<iChampion[]>([])
-  // const [champions, setChampions] = useState([])
-
-
-  // Async useEffect
-  useEffect(() => {
-    fetchChampions()
-  }, [])
-
-  // async function fetchChampions() {
-  //   const response = await fetch('http://localhost:8080/champions')
-  //   const data = await response.json()
-  //   setChampions(data)
-  // }
-
-  // Ran out of railway free hosting, temporarily using local json file for testing
-  async function fetchChampions() {
-    setChampions(AllChampions)
-  }
 
   // Devide champions into 2 arrays
   const champions1 = champions.slice(0, champions.length / 3)
