@@ -12,9 +12,6 @@ function shuffleList(list: any) {
 }
 
 function Match({ champions }: { champions: iChampion[]}) {
-
-    // const [vote1, setVote1] = useState(0)
-    // const [vote2, setVote2] = useState(0)
     
     let shuffledChampions: iChampion[] = shuffleList(champions)
     const [champion1, setChampion1] = useState(shuffledChampions[0])
@@ -31,10 +28,14 @@ function Match({ champions }: { champions: iChampion[]}) {
     const handleVote = (champion: iChampion) => {
         if (champion.name === champion1.name) {
             setVote1(vote1 + 1)
+            setVote2(0)
             shuffledChampions = shuffledChampions.filter((champion) => champion.name !== champion2.name)
+            setChampion2(shuffledChampions[1])
         } else {
             setVote2(vote2 + 1)
+            setVote1(0)
             shuffledChampions = shuffledChampions.filter((champion) => champion.name !== champion1.name)
+            setChampion1(shuffledChampions[0])
         }
     }
 
@@ -42,13 +43,17 @@ function Match({ champions }: { champions: iChampion[]}) {
 
     return(
         <>
-            <div>
+            <div className='container'>
                 <h1>Match</h1>
-                <div>
-                    <Card championName={champion1.name} championPicture={champion1.profilePictureUrl} />
-                    <button onClick={() => handleVote(champion1)}>Vote #{vote1}</button>
-                    <Card championName={champion2.name} championPicture={champion2.profilePictureUrl} />
-                    <button onClick={() => handleVote(champion2)}>Vote #{vote2}</button>
+                <div className='row'>
+                    <div className='col'>
+                        <Card championName={champion1.name} championPicture={champion1.profilePictureUrl} />
+                        <button onClick={() => handleVote(champion1)}>Vote #{vote1}</button>
+                    </div>
+                    <div className='col'>
+                        <Card championName={champion2.name} championPicture={champion2.profilePictureUrl} />
+                        <button onClick={() => handleVote(champion2)}>Vote #{vote2}</button>
+                    </div>
                 </div>
             </div>
         </>
