@@ -2,6 +2,7 @@ import '../App.css'
 import { iChampion } from '../interfaces/iChampion'
 import { useEffect, useState } from 'react'
 import Card from '../components/Card'
+import { redirect, Navigate } from 'react-router-dom';
 
 function shuffleList(list: any) {
     for (let i = list.length - 1; i > 0; i--) {
@@ -26,6 +27,7 @@ function Match({ champions }: { champions: iChampion[]}) {
 
     // define handleVote function, the champion you vote for stays in the list, the other one gets removed
     const handleVote = (champion: iChampion) => {
+
         if (champion.name === champion1.name) {
             setVote1(vote1 + 1)
             setVote2(0)
@@ -37,14 +39,21 @@ function Match({ champions }: { champions: iChampion[]}) {
             shuffledChampions = shuffledChampions.filter((champion) => champion.name !== champion1.name)
             setChampion1(shuffledChampions[0])
         }
-    }
 
+        if ((vote1 || vote2) === 4) {
+            alert(`The winner is ${champion.name}!`);
+            // Redirect to home page
+            redirect('/');
+        }
+    }
 
 
     return(
         <>
             <div className='container'>
                 <h1>Match</h1>
+                <table className='table'>
+                    
                 <div className='row'>
                     <div className='col'>
                         <Card championName={champion1.name} championPicture={champion1.profilePictureUrl} />
@@ -55,6 +64,7 @@ function Match({ champions }: { champions: iChampion[]}) {
                         <button onClick={() => handleVote(champion2)}>Vote #{vote2}</button>
                     </div>
                 </div>
+                </table>
             </div>
         </>
     )
