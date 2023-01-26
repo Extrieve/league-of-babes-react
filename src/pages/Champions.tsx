@@ -10,6 +10,22 @@ function Champions({ champions }: { champions: iChampion[]}) {
 
   const [count, setCount] = useState(0)
 
+  // useEffect(() => {
+  //   // access the champions array, fetch the profilepictureurl if the status is not 200, remove the champion from the array
+  //   champions.forEach((champion: any) => {
+  //     fetch(champion.profilePictureUrl)
+  //       .then((response) => {
+  //         if (response.status !== 200) {
+  //           console.log('Error: ' + response.status)
+  //           // remove champion from array
+  //           champions.splice(champions.indexOf(champion), 1)
+  //         }
+  //       })
+  //   })
+  //   console.log(champions)
+    
+  // }, [champions])
+
   // Devide champions into 2 arrays
   const champions1 = champions.slice(0, champions.length / 3)
   const champions2 = champions.slice(champions.length / 3, 2*champions.length / 3)

@@ -14,30 +14,46 @@ function App() {
 
   const [champions, setChampions] = useState<iChampion[]>([])
   // const [champions, setChampions] = useState([])
+  let tempChampions: iChampion[] = []
 
 
+  // Ran out of railway free hosting, temporarily using local json file for testing
+  function fetchChampions(): iChampion[] {
+    AllChampions.forEach(async (champion: iChampion) => {
+      await fetch(champion.profilePictureUrl)
+        .then((response) => {
+          if (response.status === 200) {
+            tempChampions.push(champion)
+          }
+          else{
+            console.log(champion.name + ' has no profile picture')
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    })
+    return tempChampions
+  }
   // Async useEffect
-  useEffect(() => {
-    fetchChampions()
-  }, [])
+  // useEffect(() => {
+  //   fetchChampions()
+  // }, [])
 
   // async function fetchChampions() {
   //   const response = await fetch('http://localhost:8080/champions')
   //   const data = await response.json()
   //   setChampions(data)
   // }
+  
 
-  // Ran out of railway free hosting, temporarily using local json file for testing
-  async function fetchChampions() {
-    setChampions(AllChampions)
-  }
 
   return (
     <>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/champions" element={<Champions champions={champions} />} />
+        <Route path="/champions" element={<Champions champions={fetchChampions()} />} />
         <Route path="/match" element={<Match champions={champions}/>} />
         <Route path="/create" element={<Create />} />
         <Route path="*" element={<h1>404: Not Found</h1>} />
