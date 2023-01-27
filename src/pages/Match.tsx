@@ -23,6 +23,8 @@ function Match({ champions }: { champions: iChampion[]}) {
     useEffect(() => {
         setChampion1(shuffledChampions[0])
         setChampion2(shuffledChampions[1])
+        shuffledChampions.shift()
+        shuffledChampions.shift()
     }, [shuffledChampions])
 
     // define handleVote function, the champion you vote for stays in the list, the other one gets removed
@@ -31,19 +33,19 @@ function Match({ champions }: { champions: iChampion[]}) {
         if (champion.name === champion1.name) {
             setVote1(vote1 + 1)
             setVote2(0)
-            shuffledChampions = shuffledChampions.filter((champion) => champion.name !== champion2.name)
-            setChampion2(shuffledChampions[1])
+            setChampion2(shuffledChampions[0])
+            shuffledChampions.shift()
         } else {
             setVote2(vote2 + 1)
             setVote1(0)
-            shuffledChampions = shuffledChampions.filter((champion) => champion.name !== champion1.name)
             setChampion1(shuffledChampions[0])
+            shuffledChampions.shift()
         }
 
         if ((vote1 || vote2) === 4) {
             alert(`The winner is ${champion.name}!`);
             // Redirect to home page
-            redirect('/');
+            // redirect('/');
         }
     }
 
@@ -63,6 +65,10 @@ function Match({ champions }: { champions: iChampion[]}) {
                         <Card championName={champion2.name} championPicture={champion2.profilePictureUrl} />
                         <button onClick={() => handleVote(champion2)}>Vote #{vote2}</button>
                     </div>
+                    {/* Redirect if vote1 or vote2 === 4 */}
+                    {vote1 === 4 || vote2 === 4 ?
+                     <Navigate to='/' /> :
+                      null}
                 </div>
                 </table>
             </div>
