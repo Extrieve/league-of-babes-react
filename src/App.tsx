@@ -36,7 +36,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/champions" element={<Champions champions={champions} />} />
+        <Route path="/champions" element={<Champions />} />
         <Route path="/match" element={<Match champions={champions}/>} />
         <Route path="/create" element={<Create />} />
         <Route path="*" element={<h1>404: Not Found</h1>} />

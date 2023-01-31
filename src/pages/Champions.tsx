@@ -4,27 +4,17 @@ import reactLogo from './assets/react.svg'
 import Header from '../components/Header'
 import Card from '../components/Card'
 import '../App.css'
-import { iChampion } from '../interfaces/iChampion'
+import { iChampion } from '../data/champions-data'
+import AllChampions from '../data/AllChampions.json'
 
-function Champions({ champions }: { champions: iChampion[]}) {
+function Champions() { //{ champions }: { champions: iChampion[]}
 
   const [count, setCount] = useState(0)
+  const [champions, setChampions] = useState<iChampion[]>([])
 
-  // useEffect(() => {
-  //   // access the champions array, fetch the profilepictureurl if the status is not 200, remove the champion from the array
-  //   champions.forEach((champion: any) => {
-  //     fetch(champion.profilePictureUrl)
-  //       .then((response) => {
-  //         if (response.status !== 200) {
-  //           console.log('Error: ' + response.status)
-  //           // remove champion from array
-  //           champions.splice(champions.indexOf(champion), 1)
-  //         }
-  //       })
-  //   })
-  //   console.log(champions)
-    
-  // }, [champions])
+  useEffect(() => {
+    setChampions([...AllChampions])
+  }, [])
 
   // Devide champions into 2 arrays
   const champions1 = champions.slice(0, champions.length / 3)
