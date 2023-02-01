@@ -4,19 +4,19 @@ export interface iChampion {
 }
 
 const fetchAllChampions = async () => {
-    const response = await fetch('http://localhost:3000/champions')
+    const response = await fetch('http://localhost:8080/champions')
     const data = await response.json()
     return data
 }
 
 const fetchChampion = async (name: string) => {
-    const response = await fetch(`http://localhost:3000/champions/${name}`)
+    const response = await fetch(`http://localhost:8080/champions/${name}`)
     const data = await response.json()
     return data
 }
 
 const createChampion = async (champion: iChampion) => {
-    const response = await fetch('http://localhost:3000/champions', {
+    const response = await fetch('http://localhost:8080/champions', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const createChampion = async (champion: iChampion) => {
 }
 
 const updateChampion = async (champion: iChampion) => {
-    const response = await fetch(`http://localhost:3000/champions/${champion.name}`, {
+    const response = await fetch(`http://localhost:8080/champions/${champion.name}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ const updateChampion = async (champion: iChampion) => {
 }
 
 const deleteChampion = async (name: string) => {
-    const response = await fetch(`http://localhost:3000/champions/${name}`, {
+    const response = await fetch(`http://localhost:8080/champions/${name}`, {
         method: 'DELETE'
     })
     const data = await response.json()
