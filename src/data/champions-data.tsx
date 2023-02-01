@@ -6,6 +6,10 @@ export interface iChampion {
 const fetchAllChampions = async () => {
     const response = await fetch('http://localhost:8080/champions')
     const data = await response.json()
+    // Log every data point
+    data.forEach((champion: iChampion) => {
+        console.log(champion)
+    })
     return data
 }
 

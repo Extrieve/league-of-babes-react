@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import Card from '../components/Card'
 import '../App.css'
 import { iChampion } from '../data/champions-data'
-import AllChampions from '../data/AllChampions.json'
+import fetchAllChampions from '../data/champions-data'
 
 function Champions() { //{ champions }: { champions: iChampion[]}
 
@@ -13,7 +13,12 @@ function Champions() { //{ champions }: { champions: iChampion[]}
   const [champions, setChampions] = useState<iChampion[]>([])
 
   useEffect(() => {
-    setChampions([...AllChampions])
+    // Fetch all champions
+    const fetchChampions = async () => {
+      const data = await fetchAllChampions.fetchAllChampions()
+      setChampions(data)
+    }
+    fetchChampions()
   }, [])
 
   // Devide champions into 2 arrays
@@ -30,19 +35,19 @@ function Champions() { //{ champions }: { champions: iChampion[]}
           <tr>
             <td>
               {champions1.map((champion: any) => (
-                <Card championName={champion.name} championPicture={champion.profilePictureUrl} />
+                <Card key={champion.name} championName={champion.name} championPicture={champion.profilePictureUrl} />
                 )
                 )}
             </td>
             <td>
               {champions2.map((champion: any) => (
-                <Card championName={champion.name} championPicture={champion.profilePictureUrl} />
+                <Card key={champion.name} championName={champion.name} championPicture={champion.profilePictureUrl} />
                 )
                 )}
             </td>
             <td>
               {champions3.map((champion: any) => (
-                <Card championName={champion.name} championPicture={champion.profilePictureUrl} />
+                <Card key={champion.name} championName={champion.name} championPicture={champion.profilePictureUrl} />
               )
               )}
             </td>
