@@ -4,8 +4,8 @@ import reactLogo from './assets/react.svg'
 import Header from '../components/Header'
 import Card from '../components/Card'
 import '../App.css'
-import { iChampion } from '../data/champions-data'
 import fetchAllChampions from '../data/champions-data'
+import { iChampion } from '../data/champions-data'
 
 function Champions() { //{ champions }: { champions: iChampion[]}
 
