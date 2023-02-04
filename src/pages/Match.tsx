@@ -20,6 +20,15 @@ function Match({ champions }: { champions: iChampion[]}) {
     const [vote1, setVote1] = useState(0)
     const [vote2, setVote2] = useState(0)
 
+    const loader = () => {
+        if (vote1 === 4 || vote2 === 4) {
+            // Anounce winner
+            alert('Winner is ' + champion1.name)
+            // Redirect to home page
+            return redirect('/');
+        }
+    }
+
     useEffect(() => {
         setChampion1(shuffledChampions[0])
         setChampion2(shuffledChampions[1])
@@ -41,12 +50,7 @@ function Match({ champions }: { champions: iChampion[]}) {
             setChampion1(shuffledChampions[0])
             shuffledChampions.shift()
         }
-
-        if ((vote1 || vote2) === 4) {
-            alert(`The winner is ${champion.name}!`);
-            // Redirect to home page
-            // redirect('/');
-        }
+        loader()
     }
 
 
@@ -65,10 +69,6 @@ function Match({ champions }: { champions: iChampion[]}) {
                         <Card championName={champion2.name} championPicture={champion2.profilePictureUrl} />
                         <button onClick={() => handleVote(champion2)}>Vote #{vote2}</button>
                     </div>
-                    {/* Redirect if vote1 or vote2 === 4 */}
-                    {vote1 === 4 || vote2 === 4 ?
-                     <Navigate to='/' /> :
-                      null}
                 </div>
                 </table>
             </div>
